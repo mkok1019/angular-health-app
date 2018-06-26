@@ -1,0 +1,119 @@
+<etp-navbar></etp-navbar>
+
+<main class="account-bio-page">
+  <form name="$ctrl.bioForm">
+    <md-subheader>Basic Paramters</md-subheader>
+    <md-content md-padding>
+      <div layout="row" layout-align="space-between center">
+        <span>Age</span>
+        <md-input-container flex="40">
+          <md-select name="age" ng-model="$ctrl.user.bio.age" required aria-label="age">
+            <md-option ng-repeat="item in $ctrl.ages" ng-value="item.age">
+              {{item.label}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+      <div layout="row" layout-align="space-between center">
+        <span>Gender</span>
+        <md-input-container flex="40">
+          <md-select name="gender" ng-model="$ctrl.user.bio.gender" required aria-label="gender">
+            <md-option value="M">Male</md-option>
+            <md-option value="F">Female</md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+    </md-content>
+    <md-subheader>Weight</md-subheader>
+    <md-content md-padding>
+      <div layout="row">
+        <div flex="70" layout="row">
+          <md-input-container ng-show="$ctrl.weight.is_lbs" md-no-float class="md-block">
+            <input ng-model="$ctrl.weight.lbs" type="number" ng-change="$ctrl.onWeightChange()" aria-label="weight-lbs">
+            <md-icon>lbs</md-icon>
+          </md-input-container>
+          <md-input-container ng-show="!$ctrl.weight.is_lbs" md-no-float class="md-block">
+            <input ng-model="$ctrl.weight.kg" type="number" ng-change="$ctrl.onWeightChange()" aria-label="weight-kg">
+            <md-icon>kg</md-icon>
+          </md-input-container>
+        </div>
+        <div flex="20" flex-offset="10" layout layout-align="end center">
+          <switch ng-model="$ctrl.weight.is_lbs"
+                  class="green"
+                  on="lbs"
+                  off="kg"></switch>
+        </div>
+      </div>
+    </md-content>
+    <md-subheader>Height</md-subheader>
+    <md-content md-padding>
+      <div layout="row">
+        <div flex="70" layout="row" ng-show="$ctrl.height.is_ft">
+          <md-input-container md-no-float class="md-block">
+            <input ng-model="$ctrl.height.foot" type="number" ng-change="$ctrl.onHeightChange()" aria-label="height-ft">
+            <md-icon>ft</md-icon>
+          </md-input-container>
+          <md-input-container md-no-float class="md-block">
+            <input ng-model="$ctrl.height.inches" type="number" ng-change="$ctrl.onHeightChange()" aria-label="height-in">
+            <md-icon>in</md-icon>
+          </md-input-container>
+        </div>
+        <div flex="70" layout="row" ng-show="!$ctrl.height.is_ft">
+          <md-input-container md-no-float class="md-block">
+            <input ng-model="$ctrl.height.meters" type="number" ng-change="$ctrl.onHeightChange()" aria-label="height-m">
+            <md-icon>m</md-icon>
+          </md-input-container>
+          <md-input-container md-no-float class="md-block">
+            <input ng-model="$ctrl.height.cm" type="number" ng-change="$ctrl.onHeightChange()" aria-label="height-cm">
+            <md-icon>cm</md-icon>
+          </md-input-container>
+        </div>
+        <div flex="20" flex-offset="10" layout layout-align="end center">
+          <switch ng-model="$ctrl.height.is_ft"
+                  class="green"
+                  on="ft"
+                  off="cm"></switch>
+        </div>
+      </div>
+    </md-content>
+    <md-subheader>Estimated Calories comnsumed daily</md-subheader>
+    <md-content md-padding>
+      <div layout="row">
+        <md-input-container md-no-float class="md-block" flex="100">
+          <input ng-model="$ctrl.user.bio.estimated_calorie_consumption" type="number" aria-label="estimated_calorie_consumption">
+          <md-icon>kcal</md-icon>
+        </md-input-container>
+      </div>
+    </md-content>
+    <md-subheader>Additional Info</md-subheader>
+    <md-content md-padding>
+      <div layout="row" layout-align="space-between center">
+        <span>Meat or Veggie?</span>
+        <md-input-container flex="40">
+          <md-select name="eating_type" ng-model="$ctrl.user.bio.eating_type" aria-label="eating_type">
+            <md-option value="Meat">Meat</md-option>
+            <md-option value="Veggie">Veggie</md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+      <div layout="row" layout-align="space-between center">
+        <span>Primary Goal</span>
+        <md-input-container flex="40">
+          <md-select name="goal_id" ng-model="$ctrl.user.bio.goal_id" aria-label="goal_id">
+            <md-option ng-repeat="goal in $ctrl.goals" value="{{goal.id}}">{{goal.description}}</md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+    </md-content>
+    <md-content>
+      <div layout="row" layout-align="end">
+        <md-button
+          class="etp-primary-button etp-large-button md-raised"
+          type="submit"
+          ng-click="$ctrl.save()"
+          ng-disabled="$ctrl.bioForm.$invalid || $ctrl.bioForm.$pristine" 
+        >Save Changes</md-button>
+      </div>
+    </md-content>
+  </form>
+</main>

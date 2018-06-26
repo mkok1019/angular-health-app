@@ -1,0 +1,258 @@
+@import '../../common/variables';
+
+.etp-track-log {
+  .header {
+    background-color: $light-bg-color;
+
+    .md-subheader {
+      background-color: $light-bg-color;
+    }
+  }
+
+  .body {
+    thead {
+      background-color: $light-bg-color;
+    }
+
+    tbody {
+      &.md-body {
+        td {
+          border-top: 1px solid $border-color;
+        }
+
+        &.macro-review {
+          tr {
+            td {
+              background-color: $primary-color;
+              color: $button-color;
+
+              &.pending {
+                background-color: $warning-color;
+              }
+
+              md-divider {
+                margin: 5px 0 3px;
+              }
+
+              span {
+                font-weight: 700;
+              }
+
+              p {
+                font-size: .8rem;
+                margin: 0;
+                font-weight: 400;
+
+                span {
+                  font-weight: 600;
+                  margin-left: 40px;
+                  white-space: no-wrap;
+                }
+              }
+            }
+          }
+        }
+
+        &.macro-plan {
+          .item-head {
+            background-color: $secondary-color;
+            color: $button-color;
+            font-weight: 700;
+
+            td {
+              outline: none;
+              cursor: pointer;
+
+              md-divider {
+                margin: 5px 0 3px;
+              }
+
+              p {
+                font-size: .8rem;
+                margin: 0;
+                font-weight: 400;
+
+                span {
+                  font-weight: 600;
+                  margin-left: 40px;
+                  white-space: no-wrap;
+                }
+              }
+            }
+          }
+
+          .item-body {
+            background-color: $alt-secondary-color;
+
+            &.super {
+              td {
+                color: $secondary-color;
+              }
+            }
+
+            &.high {
+              td {
+                color: $high-text-color;
+              }
+            }
+
+            &.medium {
+              td {
+                color: $medium-text-color;
+              }
+            }
+
+            &.low {
+              td {
+                color: $low-text-color;
+              }
+            }
+          }
+        }
+
+        &.trend-record {
+          td {
+            &.red {
+              color: $high-text-color;
+            }
+
+            &.green {
+              color: $medium-text-color;
+            }
+
+            &.orange {
+              color: $low-text-color;
+            }
+          }
+        }
+
+        &.client-note {
+          tr {
+            td {
+              background-color: $alt-primary-color;
+
+              p {
+                font-size: .8rem;
+                margin: 0;
+
+                b {
+                  margin-right: 16px;
+                  color: $primary-color;
+                }
+              }
+            }
+          }
+        }
+
+        &.goal-record {
+          tr {
+            td {
+              background-color: $purple-color;
+              color: $button-color;
+
+              span {
+                font-weight: 600;
+              }
+            }
+          }
+        }
+
+        &.message {
+          tr {
+            td {
+              background-color: $msg-secondary-color;
+
+              p {
+                font-size: .8rem;
+                margin: 0;
+
+                .material-icons {
+                  font-size: .8rem;
+                  margin-right: 12px;
+                }
+              }
+            }
+
+            &.is-reply {
+              td {
+                background-color: $msg-primary-color;
+              }
+            }
+          }
+        }
+
+        .btn-link {
+          i {
+            font-size: 1rem;
+          }
+        }
+
+        .item-head {
+          td {
+            padding: 8px 24px;
+
+            &:last-child {
+              padding-left: 0;
+            }
+          }
+        }
+
+        .item-date {
+          font-size: 13px;
+          font-weight: 400;
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .etp-track-log {
+    .md-button {
+      &.md-icon-button {
+        margin: 0;
+      }
+    }
+
+    .body {
+      md-table-container {
+        table {
+          &.md-table {
+            &:not(.md-row-select) {
+              th {
+                &.md-column {
+                  padding-right: 10px;
+
+                  &:first-child {
+                    padding-left: 10px;
+                  }
+                }
+              }
+
+              td {
+                &.md-cell {
+                  padding-right: 10px;
+
+                  &:first-child {
+                    padding-left: 10px;
+                  }
+                }
+              }
+            }
+          }
+
+          tbody {
+            &.md-body {
+              .item-head {
+                td {
+                  padding: 8px 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

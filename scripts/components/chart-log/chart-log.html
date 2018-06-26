@@ -1,0 +1,41 @@
+<div class="etp-chart-log">
+  <section class="header" layout="row" layout-align="space-between center">
+    <div layout="row" layout-align="begin center">
+      <md-subheader>{{$ctrl.title[$ctrl.prop]}}</md-subheader>
+      <md-menu>
+        <md-button 
+          aria-label="menu button"
+          class="md-icon-button"
+          ng-click="$mdOpenMenu($event)"
+        >
+          <md-icon>menu</md-icon>
+        </md-button>
+        <md-menu-content width="4">
+          <md-menu-item ng-repeat="item in $ctrl.props">
+            <md-button ng-click="$ctrl.setProp(item)">
+              {{$ctrl.title[item]}}
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
+    <md-subheader layout="row" layout-align="begin center">
+      <a ng-click="$ctrl.setDuration('week')" ng-class="{active: $ctrl.duration === 'week'}">
+        Week
+      </a>
+      <a ng-click="$ctrl.setDuration('month')" ng-class="{active: $ctrl.duration === 'month'}">
+        Month
+      </a>
+    </md-subheader>
+  </section>
+  <md-content>
+    <canvas 
+      id="base"
+      class="chart-bar"
+      chart-data="$ctrl.data"
+      chart-labels="$ctrl.labels"
+      chart-colors="$ctrl.colors"
+      chart-dataset-override="$ctrl.dataset" >
+    </canvas> 
+  </md-content>
+</div>

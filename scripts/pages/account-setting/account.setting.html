@@ -1,0 +1,36 @@
+<etp-navbar></etp-navbar>
+
+<main class="account-setting-page">
+  <form name="$ctrl.settingForm">
+    <md-subheader>Briefly explain your dieting history with most recent being emphasized</md-subheader>
+    <md-content md-padding>
+      <div layout="row">
+        <md-input-container flex="100">
+          <textarea ng-model="$ctrl.user.setting.diet_history" md-maxlength="280" rows="1" required aria-label="diet_history"></textarea>
+        </md-input-container>
+      </div>
+    </md-content>
+    <md-subheader>
+      Describe what you do for activity an any physical demands out of the ordinary
+      <br/>
+      (breastfeeding being a good example)
+    </md-subheader>
+    <md-content md-padding>
+      <div layout="row">
+        <md-input-container flex="100">
+          <textarea ng-model="$ctrl.user.setting.daily_activity" md-maxlength="280" rows="1" required aria-label="daily_activity"></textarea>
+        </md-input-container>
+      </div>
+    </md-content>
+    <md-content>
+      <div layout="row" layout-align="end">
+        <md-button
+          class="etp-primary-button etp-large-button md-raised"
+          type="submit"
+          ng-click="$ctrl.save()"
+          ng-disabled="$ctrl.settingForm.$invalid || $ctrl.settingForm.$pristine" 
+        >Save Changes</md-button>
+      </div>
+    </md-content>
+  </form>
+</main>

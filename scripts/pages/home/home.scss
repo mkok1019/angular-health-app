@@ -1,0 +1,20 @@
+@import '../../common/variables';
+
+.home-page {
+  .md-table {
+    .md-body {
+      .md-row {
+        cursor: pointer;
+        outline: none;
+      }
+    }
+  }
+
+  md-tabs {
+    &:not(.md-no-tab-content) {
+      &:not(.md-dynamic-height) {
+        min-height: 0;
+      }
+    }
+  }
+}

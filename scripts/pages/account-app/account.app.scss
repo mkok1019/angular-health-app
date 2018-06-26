@@ -1,0 +1,46 @@
+@import '../../common/variables';
+
+.account-app-page {
+  .md-subheader-content {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 20px;
+    font-size: 18px;
+    line-height: 20px;
+    padding-left: 26px;
+    color: $dark-text-color;
+  }
+
+  md-divider {
+    margin-top: 20px;
+  }
+
+  .healthkit {
+    .md-subheader-content {
+      background-image: url('./img/healthkit.svg');
+    }
+
+    p {
+      color: $high-text-color;
+
+      .material-icons {
+        color: $high-text-color;
+        margin: 0 10px;
+      }
+
+      &.connected {
+        color: $primary-color;
+
+        .material-icons {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .fitbit {
+    .md-subheader-content {
+      background-image: url('./img/fitbit.svg');
+    }
+  }
+}

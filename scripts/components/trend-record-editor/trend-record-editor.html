@@ -1,0 +1,66 @@
+<div class="etp-trend-record-editor">
+  <section class="header" layout="row" layout-align="space-between center">
+    <div layout="row" layout-align="begin center">
+      <md-subheader>Update Trend Data</md-subheader>
+    </div>
+    <md-subheader>
+      <md-datepicker ng-model="$ctrl.trend_date" ng-change="$ctrl.onSelectDate()"></md-datepicker>
+    </md-subheader>
+  </section>
+  <section class="body" ng-form="$ctrl.form">
+    <md-content>
+      <md-slider-container
+        ng-repeat="item in $ctrl.props"
+        layout="row"
+        ng-class="$ctrl.getClassOf(item.key)"
+        ng-disabled="item.disabled"
+      >
+        <span flex="20">{{item.label}}</span>
+        <md-slider
+          ng-if="!item.disabled"
+          flex="60"
+          min="0"
+          max="{{item.max}}"
+          ng-model="$ctrl.trend_record[item.key]"
+          aria-label="{{item.key}}"
+          ng-change="$ctrl.onChange()"
+        ></md-slider>
+        <md-slider
+          ng-if="item.disabled"
+          flex="60"
+          min="0"
+          max="{{item.max}}"
+          ng-model="$ctrl.trend_record[item.key]"
+          aria-label="{{item.key}}"
+          ng-change="$ctrl.onChange()"
+          md-discrete
+          ng-readonly="true"
+        ></md-slider>
+        <div flex="20" layout="row" layout-align="end center">
+          <md-input-container flex>
+            <input 
+              type="number"
+              min="0"
+              max="{{item.max}}"
+              ng-model="$ctrl.trend_record[item.key]"
+              aria-label="{{item.key}}"
+              ng-change="$ctrl.onChange()"
+            />
+          </md-input-container>
+        </div>
+      </md-slider-container>
+      <div layout="row" layout-align="end">
+        <md-button ng-show="$ctrl.isFitbitData()"
+          class="md-raised md-warn"
+          ng-click="$ctrl.loadTrendData()"
+        >Get new data</md-button>
+        <md-button 
+          type="submit"
+          class="md-raised etp-primary-button"
+          ng-disabled="$ctrl.form.$invalid"
+          ng-click="$ctrl.save()"
+        >Save data</md-button>
+      </div>
+    </md-content>
+  </section>
+</div>

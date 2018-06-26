@@ -1,0 +1,30 @@
+<div class="etp-note-editor">
+  <section class="header" layout="row" layout-align="begin center">
+    <md-subheader>Update your Journal</md-subheader>
+  </section>
+  <md-content>
+    <form name="$ctrl.noteForm">
+      <md-input-container class="md-block">
+        <label>Journal</label>
+        <textarea 
+          ng-model="$ctrl.note.content"
+          md-select-on-focus
+          required>
+        </textarea>
+      </md-input-container>
+      <section layout="row" layout-align="space-between center">
+        <md-input-container>
+          <label>Workout Type</label>
+          <md-select name="type" ng-model="$ctrl.note.workout_type_id">
+            <md-option ng-repeat="item in $ctrl.workout_types" ng-value="item.id">{{item.title}}</md-option>
+          </md-select>
+        </md-input-container>
+        <md-button
+          class="md-raised etp-primary-button"
+          type="submit"
+          ng-disabled="$ctrl.noteForm.$invalid"
+          ng-click="$ctrl.save()">Submit Journal Entry</md-button>
+      </section>
+    </form>
+  </md-content>
+</div>

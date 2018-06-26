@@ -1,0 +1,15 @@
+@import '../../common/variables';
+
+.account-bio-page {
+  md-input-container {
+    .md-errors-spacer {
+      display: none;
+    }
+
+    .material-icons {
+      font-family: inherit;
+      font-size: 1rem;
+      color: $primary-color;
+    }
+  }
+}

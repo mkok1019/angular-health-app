@@ -1,0 +1,12 @@
+@import '../../common/variables';
+
+.etp-note-editor {
+  .header {
+    min-height: 56px;
+    background-color: $light-bg-color;
+
+    .md-subheader {
+      background-color: $light-bg-color;
+    }
+  }
+}

@@ -1,0 +1,153 @@
+@import '../../common/variables';
+
+.etp-trend-record-editor {
+  .header {
+    background-color: $light-bg-color;
+
+    .md-subheader {
+      background-color: $light-bg-color;
+    }
+  }
+
+  .body {
+    md-slider-container {
+      &.normal {
+        md-slider {
+          .md-track {
+            &.md-track-fill {
+              background-color: $medium-text-color;
+            }
+          }
+
+          .md-thumb {
+            &::after {
+              border-color: $medium-text-color;
+              background-color: $medium-text-color;
+            }
+          }
+
+          .md-sign {
+            background-color: $medium-text-color;
+
+            &::after {
+              border-top-color: $medium-text-color;
+            }
+          }
+        }
+
+        md-input-container {
+          .md-input {
+            color: $medium-text-color;
+          }
+        }
+      }
+
+      &.warn {
+        md-slider {
+          .md-track {
+            &.md-track-fill {
+              background-color: $low-text-color;
+            }
+          }
+
+          .md-thumb {
+            &::after {
+              border-color: $low-text-color;
+              background-color: $low-text-color;
+            }
+          }
+
+          .md-sign {
+            background-color: $low-text-color;
+
+            &::after {
+              border-top-color: $low-text-color;
+            }
+          }
+        }
+
+        md-input-container {
+          .md-input {
+            color: $low-text-color;
+          }
+        }
+      }
+
+      &.alert {
+        md-slider {
+          .md-track {
+            &.md-track-fill {
+              background-color: $high-text-color;
+            }
+          }
+
+          .md-thumb {
+            &::after {
+              border-color: $high-text-color;
+              background-color: $high-text-color;
+            }
+          }
+
+          .md-sign {
+            background-color: $high-text-color;
+
+            &::after {
+              border-top-color: $high-text-color;
+            }
+          }
+        }
+
+        md-input-container {
+          .md-input {
+            color: $high-text-color;
+          }
+        }
+      }
+
+      md-slider {
+        .md-track-fill {
+          display: block;
+        }
+
+        .md-sign {
+          .md-thumb-text {
+            font-size: 9px;
+          }
+        }
+      }
+    }
+  }
+
+  md-input-container {
+    .md-errors-spacer {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .etp-trend-record-editor {
+    .md-button {
+      &.md-icon-button {
+        &.md-datepicker-button {
+          width: 0;
+          opacity: 0;
+        }
+      }
+    }
+
+    .md-datepicker-input {
+      min-width: 80px;
+    }
+
+    md-slider-container {
+      md-input-container {
+        input {
+          &[type='number'] {
+            padding-left: 5px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@import '../../common/variables';
+
+.etp-week-log {
+  .header {
+    background-color: $light-bg-color;
+
+    .md-subheader {
+      background-color: $light-bg-color;
+    }
+
+    .md-datepicker-input-container {
+      width: 0;
+      opacity: 0;
+      margin-left: 0;
+
+      .md-datepicker-input {
+        min-width: 0;
+      }
+    }
+  }
+
+  md-slider-container {
+    md-slider {
+      &[disabled] {
+        &[md-discrete] {
+          .md-sign {
+            background-color: $primary-color;
+
+            &::after {
+              border-top-color: $primary-color;
+            }
+          }
+        }
+
+        .md-track-fill {
+          display: block;
+          background-color: $primary-color;
+        }
+
+        .md-sign {
+          .md-thumb-text {
+            font-size: 9px;
+          }
+        }
+      }
+    }
+
+    md-icon {
+      color: $secondary-color;
+      cursor: pointer;
+      outline: none;
+    }
+  }
+}

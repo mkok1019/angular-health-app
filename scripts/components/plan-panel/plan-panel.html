@@ -1,0 +1,41 @@
+<div class="etp-plan-panel">
+  <section class="header" layout="row" layout-align="space-between center" ng-click="$ctrl.toggle()">
+    <md-subheader>Your current plan</md-subheader>
+    <span>
+      <md-icon ng-show="!$ctrl.isExpanded">keyboard_arrow_down</md-icon>
+      <md-icon ng-show="$ctrl.isExpanded">keyboard_arrow_up</md-icon>
+    </span>
+  </section>
+  <section class="body" ng-show="$ctrl.isExpanded">
+    <md-content>
+      <md-grid-list md-cols="8" md-cols-xs="2" md-cols-sm="4" md-cols-md="4" md-cols-lg="8" md-gutter="1em" md-row-height="120px">
+        <md-grid-tile ng-repeat="weekday in $ctrl.weekdays" ng-class="{'active': $ctrl.isActive(weekday)}">
+          <b>{{weekday}}</b>
+          <div layout="column">
+            <span>Goal: {{$ctrl.getGoal(weekday).title}}</span>
+            <span>Protein: {{$ctrl.getValues(weekday).protein}}</span>
+            <span>Carbs: {{$ctrl.getValues(weekday).carbs}}</span>
+            <span>Fat: {{$ctrl.getValues(weekday).fat}}</span>
+            <span>Calories: {{$ctrl.getValues(weekday).calories}}</span>
+          </div>
+        </md-grid-tile>
+        <md-grid-tile>
+          <b>Update</b>
+          <div layout="column">
+            <span>Your superday</span>
+            <div layout="row" layout-align="center">
+              <md-input-container>
+                <md-select name="type" ng-model="$ctrl.current_weeekly_goals" aria-label="weekly_goals">
+                  <md-option ng-repeat="item in $ctrl.weekly_goals" ng-value="item.goals">{{item.weekday}}</md-option>
+                </md-select>
+              </md-input-container>
+            </div>
+            <div layout="row" layout-align="center">
+              <md-button class="etp-primary-button" ng-click="$ctrl.update()">Update</md-button>
+            </div>
+          </div>
+        </md-grid-tile>
+      </md-grid-list>
+    </md-content>
+  </section>
+</div>

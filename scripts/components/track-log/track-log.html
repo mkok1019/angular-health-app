@@ -1,0 +1,161 @@
+<div class="etp-track-log">
+  <section class="header" layout="row" layout-align="space-between center">
+    <md-subheader>Tracking Log</md-subheader>
+    <md-subheader>
+      <md-button ng-click="$ctrl.prev()" class="md-icon-button">
+        <i class="material-icons">keyboard_arrow_left</i>
+      </md-button>
+      <span>{{$ctrl.months[$ctrl.query.month - 1]}} {{$ctrl.query.year}}</span>
+      <md-button ng-click="$ctrl.next()" class="md-icon-button">
+        <i class="material-icons">keyboard_arrow_right</i>
+      </md-button>
+    </md-subheader>
+  </section>
+  <section class="body">
+    <md-table-container>
+      <table md-table md-row-select="false">
+        <thead md-head>
+          <tr md-row>
+            <th md-column>Date</th>
+            <th md-column>Protein</th>
+            <th md-column>Carbs</th>
+            <th md-column>Fat</th>
+            <th md-column>Sodium</th>
+            <th md-column>Sugar</th>
+            <th md-column>RHR</th>
+            <th md-column>Fiber</th>
+            <th md-column>Steps</th>
+            <th md-column>Sleep</th>
+            <th md-column>Calories</th>
+            <th md-column>Weight</th>
+        </thead>
+        <tbody md-body ng-repeat="item in $ctrl.dataRows" ng-class="item.type">
+          <tr ng-if="$ctrl.isMacroReview(item)" class="item-head">
+            <td class="item-date" ng-class="{pending: item.is_pending}">{{item.date | simpleDate}}</td>
+            <td colspan="12" ng-class="{pending: item.is_pending}">
+              <div layout="row">
+                <div flex="100">
+                  <span layout layout-align="center center">REVIEW REQUESTED {{item.is_auto ? "(AUTO)" : ""}}</span>
+                  <md-divider></md-divider>
+                  <p space-between center">
+                    <i>{{item.reason}}</i>
+                  </p>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr ng-if="$ctrl.isMacroPlan(item)" class="item-head">
+            <td class="item-date" ng-click="$ctrl.togglePlan(item)">
+              <i class="material-icons" ng-show="!item.isExpanded">keyboard_arrow_down</i>
+              <i class="material-icons" ng-show="item.isExpanded">keyboard_arrow_up</i>
+            </td>
+            <td colspan="12" ng-click="$ctrl.togglePlan(item)">
+              <div layout="row">
+                <div layout="column" flex="100">
+                  <span layout layout-align="center center">PLAN UPDATED</span>
+                  <md-divider></md-divider>
+                  <p layout="row" layout-align="space-between center">
+                    <i>{{item.notes}}</i>
+                    <span>{{item.coach.first_name}} {{item.coach.last_name}}</span>
+                  </p>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr md-row ng-if="$ctrl.isMacroPlan(item)" class="item-body super" ng-show="item.isExpanded">
+            <td md-cell>{{item.start_date | simpleDate}}</td>
+            <td md-cell>{{item.super_protein}}</td>
+            <td md-cell>{{item.super_carbs}}</td>
+            <td md-cell>{{item.super_fat}}</td>
+            <td md-cell colspan="8">SUPER</td>
+          </tr>
+          <tr md-row ng-if="$ctrl.isMacroPlan(item)" class="item-body high" ng-show="item.isExpanded">
+            <td md-cell></td>
+            <td md-cell>{{item.high_protein}}</td>
+            <td md-cell>{{item.high_carbs}}</td>
+            <td md-cell>{{item.high_fat}}</td>
+            <td md-cell colspan="8">HIGH</td>
+          </tr>
+          <tr md-row ng-if="$ctrl.isMacroPlan(item)" class="item-body medium" ng-show="item.isExpanded">
+            <td md-cell></td>
+            <td md-cell>{{item.medium_protein}}</td>
+            <td md-cell>{{item.medium_carbs}}</td>
+            <td md-cell>{{item.medium_fat}}</td>
+            <td md-cell colspan="8">MEDIUM</td>
+          </tr>
+          <tr md-row ng-if="$ctrl.isMacroPlan(item)" class="item-body low" ng-show="item.isExpanded">
+            <td md-cell></td>
+            <td md-cell>{{item.low_protein}}</td>
+            <td md-cell>{{item.low_carbs}}</td>
+            <td md-cell>{{item.low_fat}}</td>
+            <td md-cell colspan="8">LOW</td>
+          </tr>
+
+          <tr md-row ng-if="$ctrl.isTrendRecord(item)">
+            <td md-cell>{{item.trend_date | simpleDate}}</td>
+            <td md-cell ng-class="$ctrl.getCellClass(item, 'protein')">{{item.protein}}</td>
+            <td md-cell ng-class="$ctrl.getCellClass(item, 'carbs')">{{item.carbs}}</td>
+            <td md-cell ng-class="$ctrl.getCellClass(item, 'fat')">{{item.fat}}</td>
+            <td md-cell>{{item.sodium}}</td>
+            <td md-cell>{{item.sugar}}</td>
+            <td md-cell>{{item.rhr}}</td>
+            <td md-cell>{{item.fiber}}</td>
+            <td md-cell ng-class="$ctrl.getCellClass(item, 'steps')">{{item.steps}}</td>
+            <td md-cell ng-class="$ctrl.getCellClass(item, 'sleep_minutes')">{{item.sleep_minutes | formatMinutes}}</td>
+            <td md-cell ng-class="$ctrl.getCellClass(item, 'calories_burned')">{{item.calories_burned}}</td>
+            <td md-cell>{{item.weight}}</td>
+          </tr>
+
+          <tr ng-if="$ctrl.isClientNote(item)" class="item-head">
+            <td class="item-date">{{item.date | simpleDate}}</td>
+            <td colspan="12">
+              <div layout="row">
+                <div flex="100">
+                  <p layout="row" layout-align="space-between center">
+                    <span>
+                      <b ng-if="item.workout_type">{{item.workout_type.title}}</b>
+                      <i>{{item.content}}</i>
+                    </span>
+                    <span>Your journal</span>
+                  </p>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr ng-if="$ctrl.isGoalRecord(item)" class="item-head">
+            <td class="item-date">{{item.created_at | simpleDate}}</td>
+            <td colspan="12">
+              <div layout="row">
+                <div flex="100" layout="row" layout-align="center center">
+                  <span>GOAL UPDATED : {{$ctrl.showGoalPhase(item)}}</span>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr ng-if="$ctrl.isMessage(item)" class="item-head" ng-class="{'is-reply': item.is_reply}">
+            <td class="item-date">{{item.date | simpleDate}}</td>
+            <td colspan="12">
+              <div layout="row">
+                <div flex="100">
+                  <p layout="row" layout-align="space-between center">
+                    <span layout="row" layout-align="begin center">
+                      <i class="material-icons" ng-if="item.is_reply">arrow_forward</i>
+                      <i class="material-icons" ng-if="!item.is_reply">arrow_back</i>
+                      <i>{{item.content}}</i>
+                    </span>
+                    <span ng-if="item.is_reply">Coach {{item.coach.first_name}}</span>
+                    <span ng-if="!item.is_reply">Your message</span>
+                  </p>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </md-table-container>
+  </section>
+</div>

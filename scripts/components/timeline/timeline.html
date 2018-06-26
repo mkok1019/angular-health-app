@@ -1,0 +1,44 @@
+<div class="etp-timeline">
+  <section class="header" layout="row" layout-align="space-between center" ng-click="$ctrl.toggle()">
+    <md-subheader>
+      Timeline
+      <md-icon ng-click="$ctrl.showDescription($event)">
+        help_outline
+        <md-tooltip>Click for more infomation</md-tooltip>
+      </md-icon>
+    </md-subheader>
+    <span>
+      <md-icon ng-show="!$ctrl.isExpanded">keyboard_arrow_down</md-icon>
+      <md-icon ng-show="$ctrl.isExpanded">keyboard_arrow_up</md-icon>
+    </span>
+  </section>
+  <section class="body" ng-show="$ctrl.isExpanded">
+    <md-content>
+      <ul>
+        <li ng-repeat="item in $ctrl.goal_records">
+          <div class="desc">
+            <div layout="column">
+              <div layout="row" layout-align="space-between center">
+                <label>Goal</label>
+                <span>{{item.goal}}</span>
+              </div>
+              <div layout="row" layout-align="space-between center" class="time-in-goal">
+                <label>Time in Goal</label>
+                <span>{{item.time_in_goal}} {{item.time_in_goal >1 ? 'days' : 'day'}}</span>
+              </div>
+              <div layout="row" layout-align="space-between center" ng-if="item.weight > 0">
+                <label>Goal Weight</label>
+                <span>{{item.weight}}</span>
+              </div>
+              <div layout="row" layout-align="space-between center" class="average-calories">
+                <label>Average Calories</label>
+                <span>{{item.calories}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="time-at">{{item.date}}</div>
+        </li>
+      </ul>
+    </md-content>
+  </section>
+</div>

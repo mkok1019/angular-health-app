@@ -1,0 +1,117 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import 'common/variables';
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .md-subheader {
+    .md-subheader-inner {
+      padding: 8px;
+    }
+  }
+
+  .hide-768 {
+    display: none;
+  }
+}
+
+.app {
+  min-height: 100%;
+  background-color: $bg-color;
+
+  md-content {
+    background-color: $bg-color;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  html,
+  body {
+    font-size: 13px;
+  }
+
+  .hide-420 {
+    display: none;
+  }
+
+  .app {
+    md-content {
+      padding: 20px 5px;
+    }
+  }
+}
+
+.md-button {
+  &.etp-primary-button {
+    border-color: $light-text-color;
+    border-style: solid;
+    border-width: 1px;
+    padding: 0 16px;
+
+    &:not([disabled]) {
+      color: $primary-color;
+      border-color: $primary-color;
+
+      &.md-raised {
+        background-color: $primary-color;
+        color: $button-color;
+
+        &.md-focused,
+        &:hover {
+          background-color: $primary-color;
+        }
+      }
+    }
+  }
+
+  &.etp-large-button {
+    font-size: 1.2rem;
+    min-height: 48px;
+    min-width: 124px;
+  }
+}
+
+a {
+  color: $nav-text-color;
+  text-decoration: none;
+}
+
+.sub-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+em {
+  color: $primary-color;
+
+  a {
+    color: $primary-color;
+    text-decoration: underline;
+  }
+}
+
+.values {
+  padding-bottom: 12px;
+
+  label {
+    font-weight: 700;
+  }
+}
+
+md-tooltip {
+  max-width: 200px;
+}
+
+md-slider {
+  .md-sign {
+    top: -12px;
+  }
+}

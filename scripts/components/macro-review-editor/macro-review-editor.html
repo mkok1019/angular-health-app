@@ -1,0 +1,24 @@
+<div class="etp-macro-review-editor">
+  <section class="header" layout="row" layout-align="begin center">
+    <md-subheader>Request a Review</md-subheader>
+  </section>
+  <md-content>
+    <form name="$ctrl.form">
+      <md-input-container class="md-block">
+        <label>Reason</label>
+        <textarea 
+          ng-model="$ctrl.macro_review.reason"
+          md-select-on-focus
+          required>
+        </textarea>
+      </md-input-container>
+      <section layout="row" layout-align="end center">
+        <md-button
+          class="md-raised etp-primary-button"
+          type="submit"
+          ng-disabled="$ctrl.form.$invalid"
+          ng-click="$ctrl.save()">Send Request</md-button>
+      </section>
+    </form>
+  </md-content>
+</div>

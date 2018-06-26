@@ -1,0 +1,46 @@
+<etp-navbar></etp-navbar>
+
+<main class="account-app-page">
+  <div class="healthkit">
+    <md-subheader>Heath Kit</md-subheader>
+    <md-content md-padding>
+      <p layout="row" layout-align="center center" ng-class="{'connected': $ctrl.healthkit}">
+        <md-icon ng-show="!$ctrl.healthkit">radio_button_unchecked</md-icon>
+        <span ng-show="!$ctrl.healthkit">
+          Not connected to Health Kit (available on iOS)
+        </span>
+        <md-icon ng-show="$ctrl.healthkit">radio_button_checked</md-icon>
+        <span ng-show="$ctrl.healthkit">
+          Connected to Health Kit (available on iOS)
+        </span>
+      </p>
+    </md-content>
+  </div>
+  <div class="fitbit">
+    <md-subheader> </md-subheader>
+    <md-content md-padding>
+      <div layout="row" layout-align="center center">
+        <a 
+          ng-href="{{$ctrl.auth_url}}" 
+          class="md-button md-primary md-raised"
+          ng-show="!$ctrl.fitbit"
+        >
+          Sign in using Fitbit account
+        </a>
+        <a 
+          ng-click="$ctrl.signout()"
+          class="md-button md-warn md-raised"
+          ng-show="$ctrl.fitbit"
+        >
+          Sign out from Fitbit account
+        </a>
+      </div>
+      <md-divider></md-divider>
+      <p layout layout-align="center">
+        You don't need to be a Fitbit user to have an account
+        but if you do and it is connected to your food logger
+        the app automatically pulls your info on refresh.
+      </p>
+    </md-content>
+  </div>
+</main>

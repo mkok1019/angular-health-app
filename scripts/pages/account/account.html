@@ -1,0 +1,112 @@
+<etp-navbar></etp-navbar>
+
+<main>
+  <md-content flex layout-padding>
+    <h3 class="sub-title">Account Settings</h2>
+    <md-divider></md-divider>
+    <form layout="column" name="$ctrl.profileForm">
+      <md-subheader>General Info</md-subheader>
+      <div layout="row">
+        <md-input-container flex="45">
+          <label>First Name</label>
+          <input ng-model="$ctrl.user.first_name" name="first_name" type="text" required>
+        </md-input-container>
+        <md-input-container flex="45" flex-offset="10">
+          <label>Last Name</label>
+          <input ng-model="$ctrl.user.last_name" name="last_name" type="text" required>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container flex="100">
+          <label>Email</label>
+          <input ng-model="$ctrl.user.email" name="email" type="email" disabled>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container flex="100">
+          <label>Facebook Name</label>
+          <input ng-model="$ctrl.user.fb_name">
+        </md-input-container>
+      </div>
+      <md-subheader>Phone Number</md-subheader>
+      <div layout="row">
+        <md-input-container flex="100">
+          <label>Phone Number</label>
+          <input ng-model="$ctrl.user.phone" pattern="[\+]?[0-9]+"required>
+        </md-input-container>
+      </div>
+      <md-subheader>Address</md-subheader>
+      <div layout="row">
+        <md-input-container flex="100">
+          <label>Address Line 1</label>
+          <input ng-model="$ctrl.user.address1" required>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container flex="100">
+          <label>Address Line 2</label>
+          <input ng-model="$ctrl.user.address2">
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container flex="100">
+          <label>City</label>
+          <input ng-model="$ctrl.user.city" required>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container flex="45">
+          <label>State / Province</label>
+          <input ng-model="$ctrl.user.state" required>
+        </md-input-container>
+        <md-input-container flex="45" flex-offset="10">
+          <label>Zip / Postal Code</label>
+          <input ng-model="$ctrl.user.zipcode" required>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-autocomplete flex required
+          md-input-name="autocompleteField"
+          md-selected-item="$ctrl.user.country"
+          md-search-text="$ctrl.searchText"
+          md-items="item in $ctrl.queryCountries($ctrl.searchText)"
+          md-require-match
+          md-floating-label="Country">
+          <md-item-template>
+            <span md-highlight-text="$ctrl.searchText">{{item}}</span>
+          </md-item-template>
+        </md-autocomplete>
+      </div>
+      
+      <section layout="row" layout-align="end center">
+        <md-button  type="submit" 
+                    class="md-raised etp-primary-button etp-large-button" 
+                    ng-disabled="$ctrl.profileForm.$invalid"
+                    ng-click="$ctrl.updateAccount()">Save changes</md-button>
+      </section>
+    </form>
+
+    <h3 class="sub-title">Password Settings</h2>
+    <md-divider></md-divider>
+    <form layout="column" name="$ctrl.passwordForm">
+      <div layout="row">
+        <md-input-container flex="100">
+          <label>Password</label>
+          <input ng-model="$ctrl.accountPassword.password" type="password" required>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container flex="100">
+          <label>Password Confirmation</label>
+          <input ng-model="$ctrl.accountPassword.password_confirmation" type="password" required compare-to="$ctrl.accountPassword.password">
+        </md-input-container>
+      </div>
+      <section layout="row" layout-align="end center">
+        <md-button  type="submit" 
+                    class="md-raised etp-primary-button etp-large-button" 
+                    ng-disabled="$ctrl.passwordForm.$invalid"
+                    ng-click="$ctrl.updatePassword()">Update Password</md-button>
+      </section>
+    </form>
+  </md-content>
+</main>

@@ -1,0 +1,65 @@
+<etp-navbar></etp-navbar>
+
+<main class="home-page">
+  <md-content>
+    <md-tabs md-selected="$ctrl.tabIndex" md-border-bottom md-autoselect>
+      <md-tab ng-repeat="tab in $ctrl.tabs"
+              label="{{tab.title}}"
+              md-on-select="$ctrl.selectTab(tab.value)">
+      </md-tab>
+    </md-tabs>
+
+    <etp-plan-panel
+      ng-show="$ctrl.isTab('daily')"
+      on-update="$ctrl.onUpdate()"
+      trend-date="$ctrl.trend_date"
+    ></etp-plan-panel>
+
+    <etp-trend-record-editor
+      ng-show="$ctrl.isTab('daily')"
+      on-update="$ctrl.onUpdate()"
+      on-date="$ctrl.onSelectDate($event)"
+      trend-date="$ctrl.trend_date"
+      updated-at="$ctrl.updatedAt"
+    ></etp-trend-record-editor>
+
+    <etp-timeline
+      ng-show="$ctrl.isTab('daily')"
+      updated-at="$ctrl.updatedAt"
+    ></etp-timeline>
+
+    <etp-week-log
+      ng-show="$ctrl.isTab('weekly')"
+      on-prop="$ctrl.onSelectProp($event)"
+      on-date="$ctrl.onSelectDate($event)"
+      trend-date="$ctrl.trend_date"
+      updated-at="$ctrl.updatedAt"
+    ></etp-week-log>
+
+    <etp-weight-chart
+      ng-show="$ctrl.isTab('graph')"
+      updated-at="$ctrl.updatedAt"
+    ></etp-weight-chart>
+
+    <etp-note-editor
+      ng-show="$ctrl.isTab('note')"
+      on-update="$ctrl.onUpdate()"
+    ></etp-note-editor>
+
+    <etp-message-editor
+      ng-show="$ctrl.isTab('message')"
+      on-update="$ctrl.onUpdate()"
+    ></etp-message-editor>
+
+    <etp-leaderboard
+      ng-show="$ctrl.isTab('leaderboard')"
+      updated-at="$ctrl.updatedAt"
+    ></etp-leaderboard>
+
+    <etp-track-log
+      ng-show="$ctrl.isNotTab('leaderboard')"
+      trend-date="$ctrl.trend_date"
+      updated-at="$ctrl.updatedAt"
+    ></etp-track-log>
+  </md-content>
+</main>

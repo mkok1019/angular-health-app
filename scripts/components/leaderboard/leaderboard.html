@@ -1,0 +1,47 @@
+<div class="etp-leaderboard">
+  <section class="header" layout="row" layout-align="begin center">
+    <md-subheader>ETP Goal Hitters</md-subheader>
+    <md-input-container>
+      <md-select ng-model="$ctrl.prop" md-on-close="$ctrl.load()" aria-label="prop">
+        <md-option value="steps">Steps</md-option>
+        <md-option value="sleep_minutes">Sleep</md-option>
+        <md-option value="props">Carbs, Protein, Fat</md-option>
+        <md-option value="all">All</md-option>
+      </md-select>
+    </md-input-container>
+  </section>
+  <section class="body">
+    <md-content>
+      <div layout="column" layout-gt-xs="row">
+        <div flex layout="column" layout-gt-sm="row">
+          <ul flex="100">
+            <li ng-repeat="item in $ctrl.clients[0]">
+              <span class="num">{{$index + 1}}</span>
+              <span class="name">{{item.first_name}} {{item.last_name}}</span>
+            </li>
+          </ul>
+          <ul flex="100">
+            <li ng-repeat="item in $ctrl.clients[1]">
+              <span class="num">{{$ctrl.unit + $index + 1}}</span>
+              <span class="name">{{item.first_name}} {{item.last_name}}</span>
+            </li>
+          </ul>
+        </div>
+        <div flex layout="column" layout-gt-sm="row">
+          <ul flex="100">
+            <li ng-repeat="item in $ctrl.clients[2]">
+              <span class="num">{{2 * $ctrl.unit + $index + 1}}</span>
+              <span class="name">{{item.first_name}} {{item.last_name}}</span>
+            </li>
+          </ul>
+          <ul flex="100">
+            <li ng-repeat="item in $ctrl.clients[3]">
+              <span class="num">{{3 * $ctrl.unit + $index + 1}}</span>
+              <span class="name">{{item.first_name}} {{item.last_name}}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </md-content>
+  </section>
+</div>

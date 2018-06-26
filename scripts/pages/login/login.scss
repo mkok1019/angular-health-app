@@ -1,0 +1,35 @@
+@import '../../common/variables';
+
+.etp-login {
+  background-color: $primary-color;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+
+  .wrapper {
+    max-width: 80%;
+    width: 400px;
+
+    md-content {
+      margin: 10px 0 0;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .register {
+      border-radius: 0 0 10px 10px;
+      margin: 0;
+      padding: 12px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .forgot-password {
+      line-height: 4;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

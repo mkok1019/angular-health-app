@@ -1,0 +1,70 @@
+@import '../../common/variables';
+
+.etp-plan-panel {
+  .header {
+    background-color: $light-bg-color;
+    outline: none;
+    cursor: pointer;
+
+    .md-subheader {
+      background-color: $light-bg-color;
+    }
+
+    .material-icons {
+      padding: 0 16px;
+      color: $primary-color;
+    }
+  }
+
+  .body {
+    md-grid-list {
+      md-grid-tile {
+        box-shadow: 0 2px 5px 2px $border-color;
+        border-radius: 4px;
+
+        &.active {
+          box-shadow: 0 2px 5px 2px $primary-shadow-color;
+
+          b {
+            color: $primary-color;
+          }
+        }
+
+        &:last-child {
+          box-shadow: none;
+          border: 1px solid $border-color;
+
+          b {
+            font-style: italic;
+          }
+
+          md-input-container {
+            margin: 0;
+          }
+
+          .md-button {
+            padding: 0;
+            margin: 5px 0 0;
+            line-height: 20px;
+            min-height: 20px;
+          }
+        }
+
+        figure {
+          display: block;
+          text-align: center;
+          padding: 5px;
+
+          b {
+            display: block;
+            padding-bottom: 10px;
+          }
+
+          span {
+            font-size: 0.8em;
+          }
+        }
+      }
+    }
+  }
+}

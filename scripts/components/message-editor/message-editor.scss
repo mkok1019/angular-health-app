@@ -1,0 +1,12 @@
+@import '../../common/variables';
+
+.etp-message-editor {
+  .header {
+    min-height: 56px;
+    background-color: $light-bg-color;
+
+    .md-subheader {
+      background-color: $light-bg-color;
+    }
+  }
+}

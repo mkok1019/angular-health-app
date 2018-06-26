@@ -1,0 +1,56 @@
+<md-toolbar class="etp-navbar">
+  <div class="md-toolbar-tools" layout="row">
+    <div flex="15">
+      <etp-logo size="48"></etp-logo>
+    </div>
+    <div flex="70" layout layout-align="center center">
+      <span class="title">{{ $ctrl.getTitle() }}</span>
+    </div>
+    <div flex="15" layout layout-align="end center">
+      <md-menu md-position-mode="target-right target" >
+        <md-button aria-label="Open demo menu" ng-click="$mdOpenMenu($event)" layout layout-align="end center">
+          <span class="hide-768">{{ $ctrl.getName() }}</span>
+          <i class="material-icons md-48">account_circle</i>
+        </md-button>
+
+        <md-menu-content width="4" >
+          <md-menu-item>
+            <md-button ui-sref="account">
+              <div layout="row" flex>
+                <p flex>Profile Info</p>
+              </div>
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ui-sref="account-bio">
+              <div layout="row" flex>
+                <p flex>Health and Program Specific Info</p>
+              </div>
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ui-sref="account-setting">
+              <div layout="row" flex>
+                <p flex>Diet and Activity History</p>
+              </div>
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ui-sref="account-app">
+              <div layout="row" flex>
+                <p flex>Trends Applications Setup</p>
+              </div>
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="$ctrl.logout()">
+              <div layout="row" flex>
+                <p flex>Log out</p>
+              </div>
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </div>
+  </div>
+</md-toolbar>

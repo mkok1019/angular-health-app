@@ -1,0 +1,25 @@
+<div class="etp-message-editor">
+  <section class="header" layout="row" layout-align="begin center">
+    <md-subheader>Send your message</md-subheader>
+  </section>
+  <md-content>
+    <form name="$ctrl.messageForm">
+      <md-input-container class="md-block">
+        <label>Message</label>
+        <textarea 
+          ng-model="$ctrl.message.content"
+          md-maxlength="500"
+          md-select-on-focus
+          required>
+        </textarea>
+      </md-input-container>
+      <section layout="row" layout-align="end center">
+        <md-button
+          class="md-raised etp-primary-button"
+          type="submit"
+          ng-disabled="$ctrl.noteForm.$invalid"
+          ng-click="$ctrl.save()">Submit Message</md-button>
+      </section>
+    </form>
+  </md-content>
+</div>

@@ -1,0 +1,29 @@
+<div class="etp-week-log">
+  <section class="header" layout="row" layout-align="space-between center">
+    <md-subheader>Weekly Log</md-subheader>
+    <md-subheader layout="row" layout-align="begin center">
+      <md-datepicker ng-model="$ctrl.trendDate" ng-change="$ctrl.onSelectDate()"></md-datepicker>
+      <span flex>{{ $ctrl.showWeekRange() }}</span>
+    </md-subheader>
+  </section>
+  <section class="body">
+    <md-content>
+      <md-slider-container layout="row" ng-disabled="true" ng-repeat="item in $ctrl.average">
+        <span flex="20">{{item.label}}</span>
+        <md-slider 
+          flex="70"
+          min="0"
+          max="{{item.max}}"
+          ng-model="item.value"
+          aria-label="{{item.key}}" 
+          md-discrete
+          ng-readonly="true"
+          step="{{item.key === 'weight' ? 0.1 : 1}}"
+        ></md-slider>
+        <span flex="10">
+          <md-icon ng-click="$ctrl.goDetail(item.key)">keyboard_arrow_right</md-icon>
+        </span>
+      </md-slider-container>
+    </md-content>
+  </section>
+</div>
